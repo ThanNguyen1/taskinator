@@ -217,6 +217,19 @@ saveTasks();
 var saveTasks = function() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+/// Gets task items from localStorage.
+/// Converts tasks from the string format back into an array of objects.
+/// Iterates through a tasks array and creates task elements on the page from it.
+var loadTasks = function() {
+  tasks = localStorage.getItem("tasks");
+
+  if (!tasks) {
+    tasks = [];
+    return false;
+  }
+
+  tasks = JSON.parse(tasks);
+}
 
 // Create a new task
 formEl.addEventListener("submit", taskFormHandler);
